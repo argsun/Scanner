@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from tracking.post.ir/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Feb 2023 16:16:55 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<!-- /Added by HTTrack -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        سامانه رهگیری مرسولات پستی
+    </title>
+    <link href="Components/bootstrap-3.3.5/css/bootstrap.min-jadid.css" rel="stylesheet" />
+    <link href="Content/Fonts/Css/font-awesome.css" rel="stylesheet" />
+    <link href="Content/Fonts/Css/fonts.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/confirm.css" rel="stylesheet" />
+    <script src="Script/jquery.js"></script>
+    <script src="Components/bootstrap-3.3.5/js/bootstrap.js"></script>
+    <script src="Script/confirm.js"></script>
+    <script>
+        function a() {
+            $("#pnlvotebtn").fadeIn(100);
+            $('.moreinfo').fadeOut(0);
+            $(".postlogo img").css({
+                'width': '75px'
+            });
+            $(".rahgiriicon img").css({
+                'width': '300px'
+            });
+            $('.pnellogo').animate({
+                    'margin-top': '0px',
+                }, 'slow')
+                // argsunplay@gmail.com $(".search-panel #txtbSearch").css({ 'margin': '0', });
+            $(".postlogo").animate({
+                // a.hadadi@gmail.com'margin-top': '-105px',
+                'float': 'right',
+                //'margin-right': '180px',
+                'width': '67%'
+            }, "slow", function() {
+                $(this).html("<img style='width:50px;' src='Content/Image/postarmsitewhite.png'>")
+                    .addClass("TopShow");
+                $('.pnellogo').css({
+                    'background-color': '#08317d'
+                })
+            });
+            $(".rahgiriicon").animate({
+                //'margin-top': '-75px',
+                //'margin-right':'220px',
+                'float': 'right',
+                'width': '60%'
+            }, "slow", function() {
+                $(this).html("<a href='http://www.post.ir/'><img src='Content/Image/rahgirigicon-white0.png' style='margin-top:-10px;height:60px;'></a>")
+                    .addClass("TopShow");
+                $(".SubTrack").fadeIn();
+
+            });
+            $('.search-panel').animate({
+                'margin-top': '-5px'
+            }, 'slow');
+
+            $(".Header").css({
+                "display": 'none'
+            });
+        }
+
+        function b() {
+
+            if ($(".pnlMoreDetils").css('display') == 'none') {
+                $(this).html('<i class="fa fa-hand-o-up" style="margin-left:3px"></i>پنهان کردن جزئیات<i class="fa fa-hand-o-up" style="margin-right:3px"></i>');
+            } else
+                $(this).html('<i class="fa fa-hand-o-down" style="margin-left:3px"></i> مشاهده جزئیات کامل مرسوله<i class="fa fa-hand-o-down" style="margin-right:3px"></i>');
+            $(".pnlMoreDetils").fadeToggle();
+
+        }
+
+        function c() {
+
+            if ($(".pnlMoreIPSDetils").css('display') == 'none') {
+                $(this).html('<i class="fa fa-hand-o-up" style="margin-left:3px"></i>پنهان کردن جزئیات رهگیری خارجی<i class="fa fa-hand-o-up" style="margin-right:3px"></i>');
+            } else
+                $(this).html('<i class="fa fa-hand-o-down" style="margin-left:3px"></i> مشاهده جزئیات کامل رهگیری خارجی مرسوله<i class="fa fa-hand-o-down" style="margin-right:3px"></i>');
+            $(".pnlMoreIPSDetils").fadeToggle();
+
+        }
+
+        function BindControlEvents() {
+            $("#btnVote").click(function() {
+                $("#txtVoteR").fadeOut();
+                $("#txtVoteT").fadeOut();
+                $("#btnVoteR").fadeOut();
+                $("#txtVoteR").hide();
+                $("#txtVoteT").hide();
+                $("#btnVoteR").hide();
+                $("#btnH0").css("background-color", "transparent");
+                $("#btnH1").css("background-color", "transparent");
+                $("#btnH2").css("background-color", "transparent");
+                $("#btnH3").css("background-color", "transparent");
+                $("#pnlvotebtn").fadeOut();
+            });
+            $("#btnH0").click(function() {
+                $("#btnH0").css("background-color", "#2ac0c7");
+                $("#btnH1").css("background-color", "transparent");
+                $("#btnH2").css("background-color", "transparent");
+                $("#btnH3").css("background-color", "transparent");
+                $.ajax({
+                    type: "POST",
+                    url: "Search.aspx/AddVote",
+                    data: "{'Vote':4,'Description':'','Tel':''}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    cache: false,
+                    success: function(msg) {
+                        //$("#frmVote").fadeToggle();
+                        $("#txtVoteR").fadeIn();
+                        $("#txtVoteT").fadeIn();
+                        $("#btnVoteR").fadeIn();
+                    }
+                });
+            });
+            $("#btnH1").click(function() {
+                $("#btnH0").css("background-color", "transparent");
+                $("#btnH1").css("background-color", "#2ac0c7");
+                $("#btnH2").css("background-color", "transparent");
+                $("#btnH3").css("background-color", "transparent");
+                $.ajax({
+                    type: "POST",
+                    url: "Search.aspx/AddVote",
+                    data: "{'Vote':3,'Description':'','Tel':''}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    cache: false,
+                    success: function(msg) {
+                        $("#txtVoteR").fadeIn();
+                        $("#txtVoteT").fadeIn();
+                        $("#btnVoteR").fadeIn();
+                    }
+                });
+            });
+            $("#btnH2").click(function() {
+                $("#btnH0").css("background-color", "transparent");
+                $("#btnH1").css("background-color", "transparent");
+                $("#btnH2").css("background-color", "#2ac0c7");
+                $("#btnH3").css("background-color", "transparent");
+                $.ajax({
+                    type: "POST",
+                    url: "Search.aspx/AddVote",
+                    data: "{'Vote':2,'Description':'','Tel':''}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    cache: false,
+                    success: function(msg) {
+                        $("#txtVoteR").fadeIn();
+                        $("#txtVoteT").fadeIn();
+                        $("#btnVoteR").fadeIn();
+                    }
+                });
+            });
+            $("#btnH3").click(function() {
+                $("#btnH0").css("background-color", "transparent");
+                $("#btnH1").css("background-color", "transparent");
+                $("#btnH2").css("background-color", "transparent");
+                $("#btnH3").css("background-color", "#2ac0c7");
+                $.ajax({
+                    type: "POST",
+                    url: "Search.aspx/AddVote",
+                    data: "{'Vote':1,'Description':'','Tel':''}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    cache: false,
+                    success: function(msg) {
+                        $("#txtVoteR").fadeIn();
+                        $("#txtVoteT").fadeIn();
+                        $("#btnVoteR").fadeIn();
+                    }
+                });
+            });
+            $("#btnVoteSave").click(function() {
+                var _des = $("#txtVoteReason").val();
+                var _tel = $("#txtVoteTel").val();
+                $.ajax({
+                    type: "POST",
+                    url: "Search.aspx/AddVote",
+                    data: "{'Vote':-1,'Description':'" + _des + "','Tel':'" + _tel + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    cache: false,
+                    success: function(msg) {
+                        $("#txtVoteR").fadeOut();
+                        $("#txtVoteT").fadeOut();
+                        $("#btnVoteR").fadeOut();
+                        $("#txtVoteR").hide();
+                        $("#txtVoteT").hide();
+                        $("#btnVoteR").hide();
+                        $("#btnH0").css("background-color", "transparent");
+                        $("#btnH1").css("background-color", "transparent");
+                        $("#btnH2").css("background-color", "transparent");
+                        $("#btnH3").css("background-color", "transparent");
+                        $("#lblVoteR").html("<div class='alert alert-success'>نظر شما با موفقیت ثبت شد.</div>");
+                        setTimeout(function() {
+                            $("#btnVoteBack").click();
+                        }, 2000);
+
+                    }
+                });
+            });
+            $("#step0d").click(function() {
+                $("#pnlResult").fadeOut(200, function() {
+                    $("#pnlParcel").fadeIn(200);
+                });
+            });
+            $("#trackshow").click(function() {
+                $("#pnlParcel").fadeOut(200, function() {
+                    $("#pnlResult").fadeIn(200);
+                });
+            });
+            $("#pnlParcel").fadeOut(0);
+            $("#divVote").fadeOut(0);
+            $("#txtbSearch").keyup(function(e) {
+                //alert(1);
+                if ($(this).val().length > 0) {
+                    $("#textcount").html($(this).val().length + "<span style=\"margin-right:2px;\">کاراکتر</span>");
+                } else {
+                    $("#textcount").html("");
+                }
+            });
+            $("#pnlvotebtn").click(function() {
+                $("#txtVoteR").fadeOut();
+                $("#txtVoteT").fadeOut();
+                $("#btnVoteR").fadeOut();
+                $("#txtVoteR").hide();
+                $("#txtVoteT").hide();
+                $("#btnVoteR").hide();
+                $("#btnH0").css("background-color", "transparent");
+                $("#btnH1").css("background-color", "transparent");
+                $("#btnH2").css("background-color", "transparent");
+                $("#btnH3").css("background-color", "transparent");
+                $("#lblVoteR").html("");
+                $("#pnlParcel").fadeOut(0);
+                $("#pnlResult").fadeOut(0);
+                $("#divVote").fadeIn(200);
+            });
+            $("#btnVoteBack").click(function() {
+                $("#divVote").fadeOut(200, function() {
+                    $("#pnlResult").fadeIn(200);
+                });
+            });
+        }
+        $(document).ready(function() {
+            BindControlEvents();
+        });
+    </script>
+</head>
+
+<body style="background-color: transparent!important;">
+    <form method="post" action="https://tracking.post.ir/" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnSearch')" id="form1">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="vmYYpVVxa8M1+M9Cxli/Z9Bn5ycD2jJHfySdezna0yZAYmO8+fmBjJ9mcgC0G4ZONh3CPXGD9d/UoX1qK7ZjGs+y1oQxuRfILACn7zD/7zGl795J/Z6pyko1jxl8rn56NPwRqfshOwodjBgRF1J/UBa3H6nNzG8IWQ29GK8FHaAWf7rPcjAcarfx8YzzTtPJfI8CUdVyl2cqRNKhj2f/2U9j1w7V+BfDWXIoeUrs6QAeEAZJ1eFvE5uykjzNWdfdOpxDsKjnRqHYxkBP2U8TVAMP0uA2HHklBp867C//3uiAOV2/TgREiqtjRaknx7FNkLMACZ/bzZJY0whLlJQ/a9SXFpgul0iJv0jtsFudEwW5xnPF/yHU3iIUpfnC+fVX+ZoyD/dsldVx27Ug+U3gqliUsFsp2SRrHxfT94ad+JupdPtvuhFlqNgbMvmA+oDfNHkPSgnun6Qe4EuBoVryCISrY118oGQ2AJCEbbalCPAs4WSqqYN8meMcz9yx5mnGpJ7OkcyRgnLInSn3ZDQXLNPIo6slbwQ9pKQJSWHymugAhRJqhj46NYLy8lfzuRIvZ6HdW1TUa79g62R1D+5RLnpaU8jn0I/Xa60jtSIwraP7VXYriyYWZobA1gQ5H/Yp"
+            />
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['form1'];
+            if (!theForm) {
+                theForm = document.form1;
+            }
+
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+        </script>
+
+
+        <script src="WebResource02f2.js?d=b0TdNy2IZElLwajW3PGA0B9RdW46ZydTbXeIhDL09rwPEeOIO2Llpg6-KEmWcI5lNl2Z7RD5hiV5tpjFA3u_C_ELepEGAdoFfpWdY9yGfKw1&amp;t=637270889307959152" type="text/javascript"></script>
+
+
+        <script src="ScriptResourcebf43.js?d=m4ymiDwUGqUvu2FnmpTXKJT22yGOrgbtGpCtlUA1Uwx_TV01DPS0CgworSCmNBVPqnvXG0Co4DukFztazGFB6B7y5YMscmT7jEw8arpoq8JEnLGijjw7F3QmqYFQni6uvMYSy4DBYIENWwbKlFSrqR3y6AHXzndM6iDmfHzqGb01&amp;t=ffffffffecf19baa" type="text/javascript"></script>
+        <script src="ScriptResourcee2aa.js?d=AozaIiTr_z5t1RTtd5sn2hdyROj95S2445eAL2en4iqhqSQqHMi04pPiDJE7e3D6-Qa-nHjhgZlktzU9AhftI-PeEA1JHZXwwvz3knIWbaB6l8C9NHkJbqsLF62ORGslZhM0cBLaqE_zldyvdGTH04q8o7rv7CxvT5eFtwVhyoOo5E2w_YpxtE1VUB_rIfso0&amp;t=ffffffffecf19baa"
+            type="text/javascript"></script>
+        <script src="WebResourcef61c.js?d=4b6EzeIW2cfyNpPzSr59eWTo9yz1LKsK45m6H0BzTw1zN1ycow_ewtkYI6cRZrC94tFXOnqzIIeTr4vTLOEpgk4vxEjili4aVYHnxs4wTk01&amp;t=637270889307959152" type="text/javascript"></script>
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BBBC20B8" />
+            <input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+            <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="I1Fa+UV9YYrD7H8PxQFbV5dJFKcHggKPQ4700tRZyIYhK99OgnCtOJx6hKKFUDCj5OpX3Jse7zS4fwepcbpJ2E748ujV2/K8k3xkwzVIZtg7qoTUm7JQ8CDDLNXuiu3vYsuHkQIgq0BGBwF/PLmqxBJgMYIRZ2BH3JtV8LXu0azLcIlPmG4J1i7wAaffrHaxa3yDCy8TM2RunOkWSJbsAw=="
+            />
+        </div>
+        <script type="text/javascript">
+            //<![CDATA[
+            Sys.WebForms.PageRequestManager._initialize('scripmanager1', 'form1', ['tpnlMain', 'pnlMain'], [], [], 90, '');
+            //]]>
+        </script>
+
+        <div id="updateProgress" style="display:none;">
+
+            <div style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: white;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="top: 10%; position: absolute;">
+                        <img src="Content/Image/arm.png" style="width: 120px;" alt="لوگو" /><br />
+                        <h4>سامانه در حال رهگیری می باشد لطفا صبر کنید ...
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="Header">
+        </div>
+        <div class="pnellogo">
+            <div class="">
+                <div class="postlogo">
+                    <img src="Content/Image/postarm.png" />
+                </div>
+                <div class="rahgiriicon">
+                    <img src="Content/Image/rahgirigicon-blue1.png" />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div id="pnlMain">
+
+                    <div class="row">
+                        <div class="search-panel col-lg-6 col-md-8 col-xs-12 col-sm-8  col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-0">
+                            <h4>لطفا شماره مرسوله خود را وارد نمایید:</h4>
+
+                            <div style="position: relative">
+                                <input name="txtbSearch" type="text" maxlength="24" id="txtbSearch" class="form-control input-lg" />
+                                <a id="btnSearch" title="جستجو" class="form-control btn link" href="javascript:__doPostBack(&#39;btnSearch&#39;,&#39;&#39;)"></a>
+                                <a id="btnCamera" class="btn link" style="position: absolute; right: 1px; top: 0;" href="#" data-toggle="modal" data-target="#cameraModal">
+                                    <i class="fa fa-camera fa-2x" style="color: yellow;"></i>
+                                </a>
+                                <label id="textcount"></label>
+                            </div>
+                        </div>
+
+                        <style>
+                            .modal-dialog {
+                                width: 85%;
+                                margin: 5% auto;
+                                height: 450px;
+                            }
+                            
+                            #interactive.viewport {
+                                position: relative;
+                                width: 100%;
+                                height: auto;
+                                overflow: hidden;
+                                text-align: center;
+                                margin-left: 2px;
+                                margin-right: 2px;
+                            }
+                            
+                            #interactive.viewport>canvas,
+                            #interactive.viewport>video {
+                                max-width: 100%;
+                                width: 100%;
+                                height: 0;
+                                padding-bottom: 75%;
+                                position: relative;
+                                overflow: hidden;
+                                margin-left: 2px;
+                                margin-right: 2px;
+                            }
+                            
+                            canvas.drawing,
+                            canvas.drawingBuffer {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                                height: 100%;
+                                margin-left: 2px;
+                                margin-right: 2px;
+                            }
+                            
+                            .viewport {
+                                width: 100%;
+                                height: 0;
+                                padding-bottom: 75%;
+                                position: relative;
+                                overflow: hidden;
+                                margin-left: 2px;
+                                margin-right: 2px;
+                            }
+                            
+                            .viewport video {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                                height: 100%;
+                                margin-left: 2px;
+                                margin-right: 2px;
+                            }
+                            
+                            .modal-header .close {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                margin-top: 10px;
+                                margin-left: 10px;
+                            }
+                            
+                            .modal-footer button {
+                                float: left;
+                            }
+                        </style>
+
+                        <div class="modal fade" id="barcodeModal" tabindex="-1" role="dialog" aria-labelledby="barcodeModalLabel" aria-hidden="true" style="direction:rtl">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="barcodeModalLabel"> اسکنر بارکد</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body" style="position: static">
+                                        <p id="text">در صورت فعال نبودن اسکنر بر روی Allow کلیک کنید.</p>
+                                        <div class="viewport">
+                                            <div id="interactive" title="در صورت عذم نمایش صحیح اسکنذ از مرورگرهایی مانند کروم . فایرفاکس استفتده کنید" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+                                        </div>
+                                        <br>
+                                        <div id="FlashControl" class="form-check mt-2" style="display: none">
+                                            <input class="form-check-input" type="checkbox" id="flashCheckbox">
+                                            <label class="form-check-label" for="flashCheckbox">
+                                                روشن کردن فلاش :
+                                    </label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <label id="detectedBarcode" class="mr-auto"></label>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">یستن اسکنر</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script src="js/quagga.min.js" type="text/javascript"></script>
+                        <script src="js/scale.fix.js" type="text/javascript"></script>
+                        <script>
+                            $(document).ready(function() {
+                                $('#btnCamera').on('click', function() {
+                                    // Check if flash is available
+                                    Quagga.init({
+                                        inputStream: {
+                                            name: "Live",
+                                            type: "LiveStream",
+                                            target: document.querySelector('#interactive'),
+                                            constraints: {
+                                                facingMode: "environment",
+                                                aspectRatio: {
+                                                    min: 1,
+                                                    max: 2
+                                                },
+                                                width: {
+                                                    min: 640
+                                                },
+                                                height: {
+                                                    min: 480
+                                                }
+                                            },
+                                        },
+                                        decoder: {
+                                            readers: ['code_128_reader']
+                                        },
+                                        numOfWorkers: 4
+                                    }, function(err) {
+                                        if (err) {
+                                            console.log("Error initializing Quagga: argsunplay@gmail.com", err);
+                                            document.getElementById('text').innerHTML = "مشکلی در دوربین دستگاه شما وجود دارد"
+                                            return;
+                                        }
+                                        console.log("Quagga initialization succeeded");
+                                        Quagga.start();
+                                        document.getElementById('text').innerHTML = "برای بهترین نتیجه بارکد را در فاصله 5 تا 10 سانتی متری دوربین بگیرید.<br> پس از اسکن صحیح اسکنر بطور خودکار بسته میشود";
+
+                                        // Show flash control if available
+                                        if (Quagga.CameraAccess.getActiveTrack().getCapabilities().torch) {
+                                            $('#FlashControl').show();
+                                        }
+
+                                        // Handle flash checkbox change
+                                        $('#flashCheckbox').on('change', function() {
+                                            var track = Quagga.CameraAccess.getActiveTrack();
+                                            if (track) {
+                                                track.applyConstraints({
+                                                    advanced: [{
+                                                        torch: $(this).is(':checked')
+                                                    }]
+                                                }).catch(function() {});
+                                            }
+                                        });
+
+                                        // Handle processed result
+                                        Quagga.onProcessed(function(result) {
+                                            var drawingCtx = Quagga.canvas.ctx.overlay,
+                                                drawingCanvas = Quagga.canvas.dom.overlay;
+
+                                            if (result) {
+                                                if (result.boxes) {
+                                                    drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+                                                    result.boxes.filter(function(box) {
+                                                        return box !== result.box;
+                                                    }).forEach(function(box) {
+                                                        Quagga.ImageDebug.drawPath(box, {
+                                                            x: 0,
+                                                            y: 1
+                                                        }, drawingCtx, {
+                                                            color: "green",
+                                                            lineWidth: 2
+                                                        });
+                                                    });
+                                                }
+
+                                                if (result.box) {
+                                                    Quagga.ImageDebug.drawPath(result.box, {
+                                                        x: 0,
+                                                        y: 1
+                                                    }, drawingCtx, {
+                                                        color: "#00F",
+                                                        lineWidth: 2
+                                                    });
+                                                }
+
+                                                if (result.codeResult && result.codeResult.code) {
+                                                    Quagga.ImageDebug.drawPath(result.line, {
+                                                        x: 'x',
+                                                        y: 'y'
+                                                    }, drawingCtx, {
+                                                        color: 'red',
+                                                        lineWidth: 3
+                                                    });
+                                                }
+                                            }
+                                        });
+
+                                        // Handle detected result
+                                        Quagga.onDetected(function(result) {
+                                            var code = result.codeResult.code;
+                                            $('#detectedBarcode').text("بار کد تشخیص داده شده :" + code);
+
+                                            if (code.length === 24 && /^[0-9]+$/.test(code)) {
+                                                $('#barcodeModal').modal('hide');
+                                                $('input[name="txtbSearch"]').val(code);
+                                            }
+                                        });
+                                    });
+
+                                    $('#barcodeModal').modal('show');
+                                });
+                                $('#barcodeModal').on('hidden.bs.modal', function() {
+                                    Quagga.stop();
+                                    document.getElementById('detectedBarcode').innerHTML = ""
+                                    document.getElementById('text').innerHTML = "در صورت فعال نبودن اسکنر بر روی Allow کلیک کنید."
+                                });
+
+                            });
+                        </script>
+
+
+
+
+
+                        <div id="pnlResult" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px;">
+                        </div>
+                        <div id="pnlParcel" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px;">
+                        </div>
+                        <div id="divVote" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center votepnl" style="padding-top: 20px;">
+                            <div class="row" style="text-align: center; width: 50%; margin: 0 auto; padding-bottom: 20px;" id="frmVote">
+                                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 text-center" style="padding-bottom: 20px;">
+                                    <h4>آیااز سرعت سیر مرسوله خود رضایت داشتید؟
+                                    </h4>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-6">
+                                    <img src="Content/Image/h0.png" id="btnH0" alt="عالی" style="cursor: pointer; background-color: transparent; padding: 10px;" />
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-6">
+                                    <img src="Content/Image/h1.png" id="btnH1" alt="خوب" style="cursor: pointer; background-color: transparent; padding: 10px;" />
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-6">
+                                    <img src="Content/Image/h2.png" id="btnH2" alt="متوسط" style="cursor: pointer; background-color: transparent; padding: 10px;" />
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-6">
+                                    <img src="Content/Image/h3.png" id="btnH3" alt="ضعیف" style="cursor: pointer; background-color: transparent; padding: 10px;" />
+                                </div>
+                                <div id="txtVoteR" class="col-lg-12 col-sm-12 col-xs-12 col-md-12 text-center" style="padding-top: 20px;">
+                                    <div class="alert alert-success">امتیاز شما با موفقیت ثبت شد.</div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">دلیل شما برای این امتیاز</span>
+                                        <input name="txtVoteReason" type="text" maxlength="500" id="txtVoteReason" class="form-control" placeholder="اختیاری" AutoComplete="off" />
+                                    </div>
+                                </div>
+                                <div id="txtVoteT" class="col-lg-12 col-sm-12 col-xs-12 col-md-12 text-center" style="padding-top: 20px;">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">شماره تماس شما</span>
+                                        <input name="txtVoteTel" type="text" maxlength="50" id="txtVoteTel" class="form-control" placeholder="اختیاری" AutoComplete="off" />
+                                    </div>
+                                </div>
+                                <div id="lblVoteR" class="col-lg-12 col-sm-12 col-xs-12 col-md-12 text-center" style="padding-top: 20px;">
+                                </div>
+                                <div id="btnVoteR" class="col-lg-12 col-sm-12 col-xs-12 col-md-12 text-center" style="padding-top: 20px;">
+                                    <div id="btnVoteSave" class="btn btn-success text-center" style="width: 200px">ثبت دلیل نظر شما</div>
+                                </div>
+                                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 text-center" style="padding-top: 20px;">
+                                    <div id="btnVoteBack" class="btn btn-primary text-center" style="width: 200px">برگشت به رهگیری</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="votebtn" id="pnlvotebtn">
+                        <h4>نظر سنجی
+                        </h4>
+                    </div>
+                    <div class="bott-title">
+                        <h4>شرکت ملی پست جمهوری اسلامی ایران</h4>
+                        <h5>معاونت توسعه فناوری اطلاعات، امنیت شبکه و هوشمندسازی</h5>
+                        <h6>- اطلاعات مربوط به جابجایی مرسولات پستی بصورت لحظه ای در این سامانه ثبت می گردد</h6>
+                        <h6>- اطلاعات مربوط به مرسولات پستی حداکثر 6 ماه در این سامانه نگهداری و قابل رهگیری می باشد</h6>
+                        <h6 id="lbleop">- در صورت هرگونه ابهام ، سوال و نیاز به اطلاعات بیشتر با شماره تلفن 193 واحد ارتباط با مشتریان و در صورت ضرورت به ثبت شکایت به <a href="http://eop.post.ir/">سامانه ثبت و پیگیری شکایت</a> شرکت ملی پست مراجعه فرمائید.</h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer text-center">
+            <div class="container">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul>
+                        <li class="topfotter">
+                            <a href="http://post.ir/" target="_blank" class="alink">پرتال شرکت ملی پست</a>&nbsp;|&nbsp;
+                            <a href="http://ecard.post.ir/" target="_blank" class="alink">سفارش آنلاین کارت پستال</a>&nbsp;|&nbsp;
+                            <a href="https://mail.post.ir/" target="_blank" class="alink">سرویس پست الکترونیک</a>&nbsp;|&nbsp;
+                            <a href="http://stamp.post.ir/" target="_blank" class="alink">سفارش تمبر اختصاصی</a>&nbsp;|&nbsp;
+                            <a href="http://www.ebazaar-post.ir/" target="_blank" class="alink">بازار الکترونیک</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <span>توسعه داده شده توسط اداره کل فناوری اطلاعات و هوشمندسازی شرکت ملی پست
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            //<![CDATA[
+            WebForm_AutoFocus('txtbSearch');
+            Sys.Application.add_init(function() {
+                $create(Sys.UI._UpdateProgress, {
+                    "associatedUpdatePanelId": "pnlMain",
+                    "displayAfter": 500,
+                    "dynamicLayout": true
+                }, null, null, $get("updateProgress"));
+            });
+            //]]>
+        </script>
+    </form>
+
+
+
+    <script lang='javascript' type='text/javascript' src='../hit.post.ir/pjs.html'></script>
+    <script lang='javascript' type='text/javascript'>
+        PostHC(2153);
+    </script>
+    <script type="text/javascript">
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+            BindControlEvents();
+        });
+
+        function printParcelInfo() {
+            var _d = document.getElementById('pParcelInfo');
+            var nw = window.open('', 'print-window');
+            nw.document.open();
+            nw.document.write('<html><head><link href="Components/bootstrap-3.3.5/css/bootstrap.min-jadid.css" rel="stylesheet" /><link href="Content/Fonts/Css/font-awesome.css" rel="stylesheet" /><link href="Content/Fonts/Css/fonts.css" rel="stylesheet" /><link href="Content/Site.css" rel="stylesheet" /><link href="Content/confirm.css" rel="stylesheet" /></head><body onload="window.print()">' + _d.innerHTML + '</body></html>');
+            nw.document.close();
+            setTimeout(function() {
+                nw.close();
+            }, 10);
+        }
+        $("#pnlvotebtn").fadeOut(0);
+    </script>
+</body>
+
+<!-- Mirrored from tracking.post.ir/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Feb 2023 16:17:08 GMT -->
+
+</html>

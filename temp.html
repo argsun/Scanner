@@ -1,0 +1,167 @@
+<script>
+    $(document).ready(function() {
+        // Check if flash is available
+        Quagga.init({
+            inputStream: {
+                name: "Live",
+                type: "LiveStream",
+                target: document.querySelector('#interactive'),
+                constraints: {
+                    facingMode: "environment",
+                    aspectRatio: {
+                        min: 1,
+                        max: 2
+                    },
+                    width: {
+                        min: 640
+                    },
+                    height: {
+                        min: 480
+                    }
+                },
+            },
+            decoder: {
+                readers: ['ean_reader']
+            }
+        }, function(err) {
+            if (err) {
+                console.log("Error initializing Quagga:", err);
+
+                return;
+            }
+            console.log("Quagga initialization succeeded");
+            Quagga.start();
+        });
+        // Set up listener to detect barcode detection
+        Quagga.onDetected(function(result) {
+            var code = result.codeResult.code;
+            $("#detectedBarcode").text("بارکد شناسایی شده: " + code);
+            Quagga.stop();
+        });
+
+        // Set up listener to toggle flash on and off
+        $('#flashCheckbox').change(function() {
+            Quagga.CameraAccess.enumerateVideoDevices().then(function(devices) {
+                var currentDeviceId = Quagga.CameraAccess.getActiveDeviceId();
+                var deviceId;
+                for (var i = 0; i < devices.length; i++) {
+                    var device = devices[i];
+                    if (device.id !== currentDeviceId) {
+                        deviceId = device.id;
+                        break;
+                    }
+                }
+                Quagga.CameraAccess.release().then(function() {
+                    var config = {
+                        inputStream: {
+                            name: "Live",
+                            type: "LiveStream",
+                            target: document.querySelector('#interactive'),
+                            constraints: {
+                                deviceId: deviceId,
+                                facingMode: "environment",
+                                aspectRatio: {
+                                    min: 1,
+                                    max: 2
+                                },
+                                width: {
+                                    min: 640
+                                },
+                                height: {
+                                    min: 480
+                                }
+                            },
+                        },
+                        decoder: {
+                            readers: ['ean_reader']
+                        }
+                    };
+                    Quagga.init(config, function(err) {
+                        if (err) {
+                            console.log("Error re-initializing Quagga:", err);
+                            return;
+                        }
+                        console.log("Quagga re-initialization succeeded");
+                        Quagga.start();
+                    });
+                });
+            });
+        });
+    });
+</script>
+-------------------------------- \\kode khob
+<script>
+    $(document).ready(function() {
+        $('#btnCamera').on('click', function() {
+            // Define the configuration for QuaggaJS
+            var config = {
+                inputStream: {
+                    type: "LiveStream",
+                    constraints: {
+                        width: {
+                            min: 640
+                        },
+                        height: {
+                            min: 480
+                        },
+                        facingMode: "environment"
+                    }
+                },
+                locator: {
+                    patchSize: "medium",
+                    halfSample: true
+                },
+                numOfWorkers: navigator.hardwareConcurrency || 4,
+                decoder: {
+                    readers: ['ean_reader']
+                },
+                locate: true
+            };
+
+            // Start QuaggaJS with the configuration
+            Quagga.init(config, function(err) {
+                if (err) {
+                    console.log("Error initializing Quagga:", err);
+                    return;
+                }
+                console.log("Quagga initialization succeeded");
+                Quagga.start();
+
+                // Handle processed result
+                Quagga.onProcessed(function(result) {
+                    var drawingCtx = Quagga.canvas.ctx.overlay,
+                        drawingCanvas = Quagga.canvas.dom.overlay,
+                        area = result.boxes[0];
+
+                    if (result) {
+                        drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+                        if (result.boxes) {
+                            drawingCtx.strokeStyle = "#00FF00";
+                            drawingCtx.strokeRect(area.x, area.y, area.width, area.height);
+                        }
+                    }
+                });
+
+                // Handle detected result
+                Quagga.onDetected(function(result) {
+                    var code = result.codeResult.code;
+                    $('#detectedBarcode').text(code);
+
+                    if (code.length === 24 && /^[0-9]+$/.test(code)) {
+                        $('#barcodeModal').modal('hide');
+                        Quagga.stop();
+                        $('input[name="txtbSearch"]').val(code);
+                    }
+                });
+            });
+
+            $('#barcodeModal').modal('show');
+
+            // Stop QuaggaJS when the modal is closed
+            $('#barcodeModal').on('hidden.bs.modal', function() {
+                Quagga.stop();
+            });
+        });
+    });
+</script>
+//

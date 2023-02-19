@@ -1,0 +1,52 @@
+﻿@font-face {
+    font-family: 'Yekan';
+    src: url("../Files/YekanWeb-Regular.eot");
+    src: url("../Files/YekanWeb-Regulard41d.eot?#iefix") format("embedded-opentype"),url("../Files/YekanWeb-Regular.woff") format("woff"),url("../Files/YekanWeb-Regular.ttf") format("truetype"),url("../Files/YekanWeb-Regular.svg#YekanWeb-Regular") format("svg");
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'YekanNumbers';
+    src: url("../Files/YekanNumbers-Regular.eot");
+    src: url("../Files/YekanNumbers-Regulard41d.eot?#iefix") format("embedded-opentype"),url("../Files/YekanNumbers-Regular.woff") format("woff"),url("../Files/YekanNumbers-Regular.ttf") format("truetype"),url("../Files/YekanNumbers-Regular.svg#YekanNumbers-Regular") format("svg");
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Mitra';
+    src: url("../Files/MitraWeb-Regular.eot");
+    src: url("../Files/MitraWeb-Regulard41d.eot?#iefix") format("embedded-opentype"),url("../../Css/Fonts/Files/MitraWeb-Regular.html") format("woff"),url("../../Css/Fonts/Files/MitraWeb-Regular-2.html") format("truetype"),url("../../Css/Fonts/Files/MitraWeb-Regular-3.html#MitraWeb-Regular") format("svg");
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Mitra';
+    src: url("../Files/MitraWeb-Bold.eot");
+    src: url("../Files/MitraWeb-Boldd41d.eot?#iefix") format("embedded-opentype"),url("../../Css/Fonts/Files/MitraWeb-Bold.html") format("woff"),url("../../Css/Fonts/Files/MitraWeb-Bold-2.html") format("truetype"),url("../../Css/Fonts/Files/MitraWeb-Bold-3.html#MitraWeb-Bold") format("svg");
+    font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Nassim';
+    src: url("../Files/Nassim-Book.eot");
+    src: url("../Files/Nassim-Bookd41d.eot?#iefix") format("embedded-opentype"),url("../../Css/Fonts/Files/Nassim-Book.html") format("woff"),url("../../Css/Fonts/Files/Nassim-Book-2.html") format("truetype"),url("../../Css/Fonts/Files/Nassim-Book-3.html#Nassim-Book") format("svg");
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'PostFont';
+    src: url("../Files/PostBold.ttf");
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
