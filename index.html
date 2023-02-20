@@ -353,12 +353,11 @@
                                 <label id="textcount"></label>
                             </div>
                         </div>
-
                         <style>
-                                .modal-dialog {
-                                margin: 0;
-                                width: 100%;
-                                height: 100%;
+                            .modal-dialog {
+                                margin: 0 auto;
+                                width: 50%;
+                                height: 50%;
                             }
                             
                             #interactive.viewport {
@@ -414,8 +413,26 @@
                             
                             .modal-footer button {
                                 float: left;
+                            }
+                            /* Media queries for landscape mode */
+                            
+                            @media only screen and (orientation: landscape) {
+                                .modal-dialog {
+                                    width: 50%;
+                                    height: 50%;
+                                }
+                                /* #interactive.viewport>canvas,
+                                #interactive.viewport>video {
+                                    padding-bottom: 56.25%;
+                                }
+                                .viewport {
+                                    padding-bottom: 56.25%;
+                                } */
+                            }
                         </style>
-                        </style>
+
+
+
 
                         <div class="modal fade" id="barcodeModal" tabindex="-1" role="dialog" aria-labelledby="barcodeModalLabel" aria-hidden="true" style="direction:rtl">
                             <div class="modal-dialog">
