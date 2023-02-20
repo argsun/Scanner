@@ -342,7 +342,7 @@
 
                     <div class="row">
                         <div class="search-panel col-lg-6 col-md-8 col-xs-12 col-sm-8  col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-0">
-                            <h4>لطفا شماره مرسوله خود را وارد نمایید:</h4>
+                            <h4>لطفا شماره مرسوله خود را وارد نمایید و یا با استفاده از دوربین بارکد مرسوله را اسکن کنید:</h4>
 
                             <div style="position: relative">
                                 <input name="txtbSearch" type="text" maxlength="24" id="txtbSearch" class="form-control input-lg" />
@@ -356,19 +356,21 @@
 
                         <style>
                             .modal-dialog {
-                                width: 85%;
-                                margin: 5% auto;
-                                height: 450px;
+                                margin: 0;
+                                height: 100%;
+                                max-height: none;
+                                max-width: none;
+                                width: 100%;
+                                position: absolute;
                             }
                             
                             #interactive.viewport {
                                 position: relative;
                                 width: 100%;
-                                height: auto;
+                                height: calc(100% - 130px);
                                 overflow: hidden;
                                 text-align: center;
-                                margin-left: 2px;
-                                margin-right: 2px;
+                                margin: 0 3px;
                             }
                             
                             #interactive.viewport>canvas,
@@ -379,8 +381,7 @@
                                 padding-bottom: 75%;
                                 position: relative;
                                 overflow: hidden;
-                                margin-left: 2px;
-                                margin-right: 2px;
+                                margin: 0 3px;
                             }
                             
                             canvas.drawing,
@@ -390,8 +391,7 @@
                                 top: 0;
                                 width: 100%;
                                 height: 100%;
-                                margin-left: 2px;
-                                margin-right: 2px;
+                                margin: 0 3px;
                             }
                             
                             .viewport {
@@ -400,8 +400,7 @@
                                 padding-bottom: 75%;
                                 position: relative;
                                 overflow: hidden;
-                                margin-left: 2px;
-                                margin-right: 2px;
+                                margin: 0 3px;
                             }
                             
                             .viewport video {
@@ -410,21 +409,19 @@
                                 top: 0;
                                 width: 100%;
                                 height: 100%;
-                                margin-left: 2px;
-                                margin-right: 2px;
+                                margin: 0 3px;
                             }
                             
                             .modal-header .close {
                                 position: absolute;
-                                left: 0;
-                                top: 0;
-                                margin-top: 10px;
-                                margin-left: 10px;
+                                left: 3px;
+                                top: 3px;
                             }
                             
                             .modal-footer button {
                                 float: left;
                             }
+                        </style>
                         </style>
 
                         <div class="modal fade" id="barcodeModal" tabindex="-1" role="dialog" aria-labelledby="barcodeModalLabel" aria-hidden="true" style="direction:rtl">
@@ -437,7 +434,7 @@
                                     <div class="modal-body" style="position: static">
                                         <p id="text">در صورت فعال نبودن اسکنر بر روی Allow کلیک کنید.</p>
                                         <div class="viewport">
-                                            <div id="interactive" title="در صورت عذم نمایش صحیح اسکنذ از مرورگرهایی مانند کروم . فایرفاکس استفتده کنید" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+                                            <div id="interactive" title="در صورت عذم نمایش صحیح اسکنر از مرورگرهایی مانند کروم یا فایرفاکس استفاده تمایید" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
                                         </div>
                                         <br>
                                         <div id="FlashControl" class="form-check mt-2" style="display: none">
