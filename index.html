@@ -421,6 +421,21 @@
                             .modal-footer button {
                                 float: left;
                             }
+                            /* Media queries for landscape mode */
+                            
+                            @media only screen and (orientation: landscape) {
+                                .modal-dialog {
+                                    width: 85%;
+                                    height: 450px;
+                                }
+                                #interactive.viewport>canvas,
+                                #interactive.viewport>video {
+                                    padding-bottom: 56.25%;
+                                }
+                                .viewport {
+                                    padding-bottom: 56.25%;
+                                }
+                            }
                         </style>
                         </style>
 
