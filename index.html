@@ -470,9 +470,7 @@
                                         <br>
                                         <div id="FlashControl" class="form-check mt-2" style="display: none">
                                             <input class="form-check-input" type="checkbox" id="flashCheckbox">
-                                            <label class="form-check-label" for="flashCheckbox">
-                                                روشن کردن فلاش :
-                                    </label>
+                                            <label class="form-check-label" for="flashCheckbox"> روشن کردن فلاش </label>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -586,7 +584,7 @@
                                         // Handle detected result
                                         Quagga.onDetected(function(result) {
                                             var code = result.codeResult.code;
-                                            $('#detectedBarcode').text("بار کد تشخیص داده شده :<br>" + code);
+                                            $('#detectedBarcode').text("بار کد تشخیص داده شده :<br> " + code);
 
                                             if (code.length === 24 && /^[0-9]+$/.test(code)) {
                                                 $('#barcodeModal').modal('hide');
