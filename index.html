@@ -354,7 +354,7 @@
                             </div>
                         </div>
                         <style>
-                            /* Move the top close button to the left */
+                                /* Move the top close button to the left */
                             
                             .modal-header .close {
                                 position: absolute;
@@ -366,7 +366,7 @@
                             #scannerclose {
                                 position: absolute;
                                 left: 20px;
-                                bottom: 20px;
+                                bottom: 10px;
                             }
                             /* Make the video fill the entire viewport */
                             
@@ -387,7 +387,7 @@
                             /* Style the detected barcode label */
                             
                             #detectedBarcode {
-                                font-size: 18px;
+                                font-size: 11;
                                 font-weight: bold;
                                 color: #ffd008;
                             }
@@ -423,7 +423,6 @@
                             /* Add a background color and border to the modal footer */
                             
                             .modal-footer {
-                                background-color: #f8f9fa;
                                 border-bottom-left-radius: 5px;
                                 border-bottom-right-radius: 5px;
                             }
@@ -435,125 +434,23 @@
                             /* Style the text within the modal body */
                             
                             #text {
-                                font-size: 16px;
-                            }
-                        </style>
-                        <!-- <style>
-                            .modal-dialog {
-                                margin: 0 auto;
-                                width: 100%;
-                                padding-left: 20px;
-                                padding-right: 20px;
+                                font-size: 13px;
+                                font-weight: bold;
                             }
                             
-                            #interactive.viewport {
-                                position: relative;
-                                width: 100%;
-                                height: 50%;
-                                overflow: hidden;
-                                text-align: center;
-                            }
-                            
-                            #interactive.viewport>canvas,
-                            #interactive.viewport>video {
-                                max-width: 100%;
-                                width: 100%;
-                                height: 0;
-                                
-                                position: relative;
-                                overflow: hidden;
-                            }
-                            
-                            canvas.drawing,
-                            canvas.drawingBuffer {
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                width: 100%;
-                                height: 100%;
-                            }
-                            
-                            .viewport {
-                                width: 100%;
-                                height: 0;
-                                padding-bottom: 75%;
-                                position: relative;
-                                overflow: hidden;
-                            }
-                            
-                            .viewport video {
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                width: 100%;
-                                height: 100%;
-                            }
-                            
-                            .modal-header .close {
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                margin-top: 10px;
-                                margin-left: 10px;
-                            }
-                            
-                            .modal-footer button {
-                                float: left;
-                            } -->
-                        <!-- /* \\ Media queries for landscape mode */
-                            /*                             
                             @media only screen and (orientation: landscape) {
                                 .modal-dialog {
-                                    width: 90%;
-                                    height: 90%;
-                                }
-                                #interactive.viewport>canvas,
-                                #interactive.viewport>video {
-                                    padding-bottom: 95.25%;
+                                    margin: 5vh auto;
+                                    width: 90vw;
+                                    max-height: 90vh;
                                 }
                                 .viewport {
-                                    padding-bottom: 95.25%;
+                                    padding-bottom: 70%;
                                 }
-                            } */
-                        </style> -->
-                        <!-- <style>
-                            /* Center modal vertically */
-                            
-                            .modal.fade.show .modal-dialog {
-                                display: flex;
-                                height: fit-content;
-                            }
-                            /* Right-to-left text direction */
-                            
-                            .modal-body,
-                            .modal-footer {
-                                direction: rtl;
-                                height: 80%;
-                                overflow: scroll;
-                            }
-                            /* Custom style for checkbox label */
-                            
-                            .form-check-label {
-                                font-weight: normal;
-                                margin-right: 5px;
-                            }
-                            /* Style for the viewport container */
-                            
-                            .viewport {
-                                position: relative;
-                                width: 100%;
-                                height: 300px;
-                            }
-                            /* Style for the interactive scanner element */
-                            
-                            #interactive {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                            }
-                        </style> -->
+                                #scannerclose {
+                                    bottom: 20px;
+                                }
+                        </style>
 
 
 
