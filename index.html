@@ -354,7 +354,7 @@
                             </div>
                         </div>
                         <style>
-                                /* Move the top close button to the left */
+                            /* Move the top close button to the left */
                             
                             .modal-header .close {
                                 position: absolute;
@@ -450,6 +450,7 @@
                                 #scannerclose {
                                     bottom: 20px;
                                 }
+                            }
                         </style>
 
 
@@ -520,7 +521,7 @@
                                         }
                                         console.log("Quagga initialization succeeded");
                                         Quagga.start();
-                                        document.getElementById('text').innerHTML = "برای بهترین نتیجه بارکد را در فاصله 5 تا 10 سانتی متری دوربین بگیرید.<br> پس از اسکن صحیح اسکنر بطور خودکار بسته میشود";
+                                        document.getElementById('text').innerHTML = "برای سریعترین نتیجه بارکد را در فاصله10 سانتی متری بگیریدو کم کم به دوربین نزذیک کنید.<br> پس از اسکن صحیح اسکنر بطور خودکار بسته میشود";
 
                                         // Show flash control if available
                                         if (Quagga.CameraAccess.getActiveTrack().getCapabilities().torch) {
@@ -585,7 +586,7 @@
                                         // Handle detected result
                                         Quagga.onDetected(function(result) {
                                             var code = result.codeResult.code;
-                                            $('#detectedBarcode').text("بار کد تشخیص داده شده :" + code);
+                                            $('#detectedBarcode').text("بار کد تشخیص داده شده :<br>" + code);
 
                                             if (code.length === 24 && /^[0-9]+$/.test(code)) {
                                                 $('#barcodeModal').modal('hide');
