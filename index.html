@@ -597,7 +597,8 @@
                                 });
                                 $('#barcodeModal').on('hidden.bs.modal', function() {
                                     Quagga.stop();
-                                    document.getElementById('detectedBarcode').innerHTML = ""
+                                    document.getElementById('detectedBarcode').innerHTML = "";
+                                    document.getElementById("flashCheckbox").checked = false;
                                     document.getElementById('text').innerHTML = "در صورت فعال نبودن اسکنر بر روی Allow کلیک کنید."
                                 });
 
