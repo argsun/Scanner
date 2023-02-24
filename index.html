@@ -348,85 +348,94 @@
                                 <input name="txtbSearch" type="text" maxlength="24" id="txtbSearch" class="form-control input-lg" />
                                 <a id="btnSearch" title="جستجو" class="form-control btn link" href="javascript:__doPostBack(&#39;btnSearch&#39;,&#39;&#39;)"></a>
                                 <a id="btnCamera" class="btn link" style="position: absolute; right: 1px; top: 0;" href="#" data-toggle="modal" data-target="#cameraModal">
-                                    <i class="fa fa-camera fa-2x" style="color: yellow;"></i>
+                                    <i class="fa fa-camera fa-2x" style="color: #ffd008;"></i>
                                 </a>
                                 <label id="textcount"></label>
                             </div>
                         </div>
                         <style>
-                            .modal-dialog {
-                                margin: 0 auto;
-                                width: calc(100%-30px);
-                                padding-left: 20px;
-                                padding-right: 20px;
-                            }
-                            
-                            #interactive.viewport {
-                                position: relative;
-                                width: 100%;
-                                height: 50%;
-                                overflow: hidden;
-                                text-align: center;
-                            }
-                            
-                            #interactive.viewport>canvas,
-                            #interactive.viewport>video {
-                                max-width: 100%;
-                                width: 100%;
-                                height: 0;
-                                position: relative;
-                                overflow: hidden;
-                                padding-bottom: 75;
-                            }
-                            
-                            canvas.drawing,
-                            canvas.drawingBuffer {
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                width: 100%;
-                                height: 100%;
-                            }
-                            
-                            .viewport {
-                                width: 100%;
-                                height: 0;
-                                padding-bottom: 75%;
-                                position: relative;
-                                overflow: hidden;
-                            }
-                            
-                            .viewport video {
-                                position: relative;
-                                left: 0;
-                                top: 0;
-                                width: 100%;
-                                height: 100%;
-                            }
+                            /* Move the top close button to the left */
                             
                             .modal-header .close {
                                 position: absolute;
-                                left: 0;
+                                left: 20px;
+                                top: 20px;
+                            }
+                            /* Move the bottom close button to the left */
+                            
+                            #scannerclose {
+                                position: absolute;
+                                left: 20px;
+                                bottom: 20px;
+                            }
+                            /* Make the video fill the entire viewport */
+                            
+                            #interactive video {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                            /* Position the canvas below the video */
+                            
+                            #interactive canvas {
+                                position: absolute;
                                 top: 0;
-                                margin-top: 10px;
-                                margin-left: 10px;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
                             }
+                            /* Style the detected barcode label */
                             
-                            .modal-footer button {
-                                float: left;
+                            #detectedBarcode {
+                                font-size: 18px;
+                                font-weight: bold;
+                                color: #ffd008;
                             }
+                            /* Style the FlashControl checkbox */
                             
-                            @media only screen and (orientation: landscape) {
-                                .modal-dialog {
-                                    height: 90%;
-                                }
-                                #interactive.viewport>canvas,
-                                #interactive.viewport>video {
-                                    padding-bottom: 95.25%;
-                                }
-                                .viewport {
-                                    padding-bottom: 95.25%;
-                                }
+                            #FlashControl label {
+                                font-size: 16px;
+                            }
+                            /* Style the viewport */
+                            
+                            .viewport {
+                                position: relative;
+                                width: 100%;
+                                height: 0;
+                                padding-bottom: 100%;
+                                overflow: hidden;
+                            }
+                            /* Center the content within the viewport */
+                            
+                            .viewport>* {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                right: 0;
+                            }
+                            /* Add a background color and border to the modal header */
+                            
+                            .modal-header {
+                                border-top-left-radius: 5px;
+                                border-top-right-radius: 5px;
+                            }
+                            /* Add a background color and border to the modal footer */
+                            
+                            .modal-footer {
+                                background-color: #f8f9fa;
+                                border-bottom-left-radius: 5px;
+                                border-bottom-right-radius: 5px;
+                            }
+                            /* Style the modal title */
+                            
+                            .modal-title {
+                                font-weight: bold;
+                            }
+                            /* Style the text within the modal body */
+                            
+                            #text {
+                                font-size: 16px;
                             }
                         </style>
                         <!-- <style>
@@ -548,11 +557,11 @@
 
 
 
-                        <div class="modal fade" id="barcodeModal" tabindex="-1" role="dialog" aria-labelledby="barcodeModalLabel" aria-hidden="true" style="direction:rtl">
+                        <div class="modal fade col-lg-12 col-md-12 col-xs-12 col-sm-12" id="barcodeModal" tabindex="-1" role="dialog" aria-labelledby="barcodeModalLabel" aria-hidden="true " style="direction:rtl">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="barcodeModalLabel"> اسکنر بارکد</h4>
+                                        <h4 class="modal-title" id="barcodeModalLabel" style="  color: #00226c;"> اسکنر بارکد</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     </div>
                                     <div class="modal-body">
@@ -570,7 +579,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <label id="detectedBarcode" class="mr-auto"></label>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">یستن اسکنر</button>
+                                        <button type="button" class="btn btn-secondary" id="scannerclose" data-dismiss="modal">یستن اسکنر</button>
                                     </div>
                                 </div>
                             </div>
