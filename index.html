@@ -36,7 +36,7 @@
             $('.pnellogo').animate({
                     'margin-top': '0px',
                 }, 'slow')
-                // argsunplay@gmail.com $(".search-panel #txtbSearch").css({ 'margin': '0', });
+                // written by argsunplay@gmail.com $(".search-panel #txtbSearch").css({ 'margin': '0', });
             $(".postlogo").animate({
                 // a.hadadi@gmail.com'margin-top': '-105px',
                 'float': 'right',
@@ -513,13 +513,13 @@
                                         numOfWorkers: 4
                                     }, function(err) {
                                         if (err) {
-                                            console.log("Error initializing Quagga: argsunplay@gmail.com", err);
+                                            console.log("Error initializing Quagga", err);
                                             document.getElementById('text').innerHTML = "مشکلی در دوربین دستگاه شما وجود دارد"
                                             return;
                                         }
-                                        console.log("Quagga initialization succeeded");
+                                        console.log("Quagga initialization succeeded argsunplay@gmail.com");
                                         Quagga.start();
-                                        document.getElementById('text').innerHTML = "برای سریعترین نتیجه بارکد را در فاصله10 سانتی متری بگیریدو کم کم به دوربین نزذیک کنید.<br> پس از اسکن صحیح اسکنر بطور خودکار بسته میشود";
+                                        document.getElementById('text').innerHTML = "برای سریعترین نتیجه بارکد را در فاصله10 سانتی متری بگیریدو کم کم به دوربین نزذیک کنید. <br> پس از اسکن صحیح اسکنر بطور خودکار بسته میشود";
 
                                         // Show flash control if available
                                         if (Quagga.CameraAccess.getActiveTrack().getCapabilities().torch) {
@@ -584,7 +584,7 @@
                                         // Handle detected result
                                         Quagga.onDetected(function(result) {
                                             var code = result.codeResult.code;
-                                            $('#detectedBarcode').text("بار کد تشخیص داده شده :<br> " + code);
+                                            $('#detectedBarcode').text("بار کد تشخیص داده شده : <br>" + code);
 
                                             if (code.length === 24 && /^[0-9]+$/.test(code)) {
                                                 $('#barcodeModal').modal('hide');
