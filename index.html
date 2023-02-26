@@ -388,7 +388,6 @@
                             
                             #detectedBarcode {
                                 font-size: 11;
-                                font-weight: bold;
                                 color: #ffd008;
                             }
                             /* Style the FlashControl checkbox */
@@ -525,7 +524,9 @@
                                         if (Quagga.CameraAccess.getActiveTrack().getCapabilities().torch) {
                                             $('#FlashControl').show();
                                         }
-
+                                        if (navigator.userAgent.indexOf("Firefox") !== -1) {
+                                            $('#FlashControl').show();
+                                        }
                                         // Handle flash checkbox change
                                         $('#flashCheckbox').on('change', function() {
                                             var track = Quagga.CameraAccess.getActiveTrack();
@@ -584,7 +585,7 @@
                                         // Handle detected result
                                         Quagga.onDetected(function(result) {
                                             var code = result.codeResult.code;
-                                            $('#detectedBarcode').text("بار کد تشخیص داده شده :" + '<br>' + code);
+                                            $('#detectedBarcode').text(code);
 
                                             if (code.length === 24 && /^[0-9]+$/.test(code)) {
                                                 $('#barcodeModal').modal('hide');
