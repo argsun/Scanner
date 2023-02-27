@@ -423,9 +423,12 @@
                             }
                             /* Add a background color and border to the modal footer */
                             
-                            .modal-footer {
+                            .modal-footer button {
                                 border-bottom-left-radius: 5px;
                                 border-bottom-right-radius: 5px;
+                                position: absolute;
+                                left: 20px;
+                                bottom: 20px;
                             }
                             /* Style the modal title */
                             
@@ -466,7 +469,7 @@
                                     <div class="modal-body">
                                         <p id="text">در صورت فعال نبودن اسکنر بر روی Allow کلیک کنید.</p>
                                         <div class="viewport">
-                                            <div id="interactive" title="در صورت عذم نمایش صحیح اسکنر از مرورگرهایی مانند کروم یا فایرفاکس استفاده تمایید" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+                                            <div id="interactive" title="در صورت عذم نمایش صحیح اسکنر از مرورگر کروم  استفاده تمایید" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
                                         </div>
                                         <br>
                                         <div id="FlashControl" class="form-check mt-2" style="display: none">
@@ -520,7 +523,7 @@
                                         }
                                         console.log("Quagga initialization succeeded argsunplay@gmail.com");
                                         Quagga.start();
-                                        document.getElementById('text').innerHTML = "برای سریعترین نتیجه بارکد را در فاصله10 سانتی متری بگیریدو کم کم به دوربین نزذیک کنید. <br> پس از اسکن صحیح اسکنر بطور خودکار بسته میشود";
+                                        document.getElementById('text').innerHTML = "برای سریعترین نتیجه بارکد را در فاصله10 سانتی متری بگیریدو کم کم به دوربین نزدیک کنید. <br> پس از اسکن صحیح اسکنر بطور خودکار بسته میشود";
 
                                         // Show flash control if available
                                         if (Quagga.CameraAccess.getActiveTrack().getCapabilities().torch) {
